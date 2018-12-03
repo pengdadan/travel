@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # travel2
 
 #### 项目介绍
@@ -55,4 +54,3 @@
 3. 导入fastclick，处理手机端点击300ms延迟问题
   + 在项目目录下安装：cnpm i fastclick -S
   + 在mian.js中导入并加载fastclick：import fastClick from 'fastclick'  // fastClick.attach(document.body)
->>>>>>> project init
