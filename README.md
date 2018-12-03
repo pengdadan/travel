@@ -14,3 +14,9 @@
 3. 导入fastclick，处理手机端点击300ms延迟问题
   + 在项目目录下安装：cnpm i fastclick -S
   + 在mian.js中导入并加载fastclick：import fastClick from 'fastclick'  // fastClick.attach(document.body)
+
+## 制作header区域
+1. 需要用到iconfont图标，去网页搜索iconfont官网，下载所需要的图标，下载完成后解压下载图标，把四个字体文件放到styles文件夹下的iconfont文件夹下，把iconfont.css文件放到styles文件夹下，然后修改iconfont.css文件中的四个路径，就可以去网页复制图标代码使用，使用方式：<span class="iconfont iconfont-left">&#xe624;</span>
+2. 当多个页面可以共用一个样式时，提炼出一个公共样式，在styles文件夹下创建一个varibles.stylus文件，使用：$bgColor = #00bcd4 方式创建公共样式，在使用的页面导入这个文件后，就可以使用此样式。（备注：因为是在css中导入css样式，所以import前面需要加@符号，即@import）
+3. 当需要多次引入一个文件夹中的内容时，可以去项目目录下的build文件夹中找到webpack.base.config.js文件，在@后面添加'styles': resolve('src/assets/styles')，
+即可以将styles设置为直接导入目录，可以在其他文件中通过~styles的方式直接导入styles文件夹

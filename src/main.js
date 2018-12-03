@@ -8,6 +8,9 @@ import fastClick from 'fastclick'
 import './assets/styles/reset.css'
 // 处理底部一像素变大情况
 import './assets/styles/border.css'
+// 导入字体图标
+import './assets/styles/iconfont.css'
+
 Vue.config.productionTip = false
 // 加载fastClick
 fastClick.attach(document.body)
