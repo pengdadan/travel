@@ -13,7 +13,8 @@
 2. 在assets文件夹中创建一个styles文件，里面分别放入border.css(用于处理页面底部一像素问题)和reset.css(适用于大部分手机端显示问题)文件
 3. 导入fastclick，处理手机端点击300ms延迟问题
   + 在项目目录下安装：cnpm i fastclick -S
-  + 在mian.js中导入并加载fastclick：import fastClick from 'fastclick'  // fastClick.attach(document.body)
+  + 在mian.js中导入并加载fastclick：import fastClick from 'fastclick' 
+  + fastClick.attach(document.body)
 
 ## 制作首页header区域
 1. 需要用到iconfont图标，去网页搜索iconfont官网，下载所需要的图标，下载完成后解压下载图标，把四个字体文件放到styles文件夹下的iconfont文件夹下，把iconfont.css文件放到styles文件夹下，然后修改iconfont.css文件中的四个路径，就可以去网页复制图标代码使用，使用方式：< span class="iconfont " >&#xe624 ;< /span>
