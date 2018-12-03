@@ -5,6 +5,12 @@ import App from './App'
 import router from './router/index.js'
 // 处理手机端click事件300ms延迟情况
 import fastClick from 'fastclick'
+// 按需导入轮播图样式
+import {Swipe,SwipeItem} from 'mint-ui'
+Vue.component(Swipe.name, Swipe)
+Vue.component(SwipeItem.name, SwipeItem)
+import "mint-ui/lib/style.css"
+// 初始化样式
 import './assets/styles/reset.css'
 // 处理底部一像素变大情况
 import './assets/styles/border.css'

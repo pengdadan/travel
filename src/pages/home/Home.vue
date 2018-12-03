@@ -1,19 +1,25 @@
 <template>
   <div>
     <home-header></home-header>
+    <home-swipe></home-swipe>
+    <div>test</div>
   </div>
 </template>
 
 <script>
-import HomeHeader from './components/Header'
+import HomeHeader from "./components/Header";
+import HomeSwipe from "./components/Swipe";
 export default {
-  name: 'Home',
+  name: "Home",
   components: {
-    HomeHeader
+    HomeHeader,
+    HomeSwipe
   }
-}
-
+};
 </script>
 
 <style lang="">
+.mint-swipe {
+  height: 200px;
+}
 </style>
