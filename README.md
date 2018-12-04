@@ -29,3 +29,22 @@ Vue.component(Swipe.name, Swipe)
 Vue.component(SwipeItem.name, SwipeItem)
 import "mint-ui/lib/style.css"
 3. 在 export default中 载入图片数组，只能加载网页地址，不能加载本地图片地址(除非使用require方式：{ id: 1, img: require("@/images/2.1.jpeg") },)
+
+## 制作首页icon区域
+1. 手动绘制一个8宫格区域，保证样式符合产品需求；
+2. 将轮播图的外层标签包裹8宫格区域，以实现分页滑动功能；
+3. 在 export default 中在入需要循环的 icon 图标数组，最好是9个数据，以实现到第二页分页效果，
+    在 export default 中添加computed 计算属性，通过计算属性，将icon数据分组，实现第二页分页效果
+    + computed: {
+    + pages () {
+      + const pages = []
+      + this.iconList.forEach((item,index) => {
+      + const page = Math.floor(index/8)
+      + if (!pages[page]) {
+        + pages[page] = []
+        + }
+        + pages[page].push(item)
+      + })
+      + return pages;
+    + }
+  + }

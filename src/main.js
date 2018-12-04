@@ -16,6 +16,9 @@ import './assets/styles/reset.css'
 import './assets/styles/border.css'
 // 导入字体图标
 import './assets/styles/iconfont.css'
+// 导入mui样式
+import './lib/mui/css/mui.min.css'
+// import './lib/mui/js/mui'
 
 Vue.config.productionTip = false
 // 加载fastClick
