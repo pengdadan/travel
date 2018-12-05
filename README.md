@@ -82,12 +82,28 @@ import "mint-ui/lib/style.css"
   5. 通过父子传值的方式，将父组件中请求的数据传到子组件中，首先在父组件中data里面定义要接收数据的空对象或数组，然后通过方法向对象和数组中传数据，再在对应的模板中绑定要传的数据，在子组件中通过props接收父组件中传递的数据，然后在子组件中通过v-for渲染数据
 
 ## 城市选择页面制作
-1. 在pages目录下创建一个city目录
-2. 在city目录下创建一个city.vue组件，和一个components文件夹，用于放置city页面的所有组件
-3. 在路由router文件夹下的index.js文件中放置city页面路由
+  1. 在pages目录下创建一个city目录
+  2. 在city目录下创建一个city.vue组件，和一个components文件夹，用于放置city页面的所有组件
+  3. 在路由router文件夹下的index.js文件中放置city页面路由
 
 ## 城市页面header部分制作
-1. 在components文件夹下创建header.vue组件，在组件中绘制header样式，
-2. 在city文件中导入header.vue组件
+  1. 在components文件夹下创建header.vue组件，在组件中绘制header样式，
+  2. 在city文件中导入header.vue组件
 
-  
+## 绘制搜索框布局
+
+## 城市列表制作
+1. 绘制当前城市样式
+2. 绘制热门城市样式
+3. 绘制各级字母列表城市样式
+城市列表需要绝对定位，保证城市header始终能够在页面上显示
+
+## BetterScroll 使用
+1. 在项目中安装 better-scroll 插件：cnpm i better-scroll -S
+2. 欲使用这个插件，必需保证html格式符合github格式要求，因此，需要在template下面的div中再用一个div包裹里面的内容
+3. 在 export default 中挂载一个 mounted 生命周期钩子：
+  + mounted() {
+    + this.scroll = new Bscroll(this.$refs.wrapper)
+  + }
+
+## 绘制右面侧边栏字母表
