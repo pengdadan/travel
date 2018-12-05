@@ -48,3 +48,36 @@ import "mint-ui/lib/style.css"
       + return pages;
     + }
   + }
+
+## 绘制热销推荐部分
+1. 创建recommend.vue组件；
+2. 绘制热销推荐部分样式
+
+## 绘制周末去哪了部分
+1. 创建 weekend.vue组件；
+2. 绘制周末去哪了部分样式
+
+## 首页axios请求
+1. 在项目目录下安装axios：cnpm i axios -S
+2. 在 Home.vue 中导入axios，import axios from "axios"
+3. 在 export default 中创建 mounted 生命周期钩子，并调用方法中的axios请求函数this.getHomeInfo（）
+4. 在方法中创建请求数据的方法：
+  + methods: {
+    + getHomeInfo() {
+      + axios.get('/api/index.json').then(this.getHomeInfoSucc)
+    + },
+    + getHomeInfoSucc (res) {
+      + res = res.data
+      + if(res.ret && res.data) {
+        + const data = res.data
+        + this.city = data.city
+        + this.swipe = data.swiperList
+        + this.icon = data.iconList
+        + this.recommend = data.recommendList
+        + this.weekend = data.weekendList
+      + }
+      + console.log(res)
+    + }
+  + },
+  5. 通过父子传值的方式，将父组件中请求的数据传到子组件中，首先在父组件中data里面定义要接收数据的空对象或数组，然后通过方法向对象和数组中传数据，再在对应的模板中绑定要传的数据，在子组件中通过props接收父组件中传递的数据，然后在子组件中通过v-for渲染数据
+  
