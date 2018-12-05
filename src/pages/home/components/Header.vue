@@ -7,10 +7,12 @@
       <span class="iconfont">&#xe632;</span>
       输入城市景点
     </div>
-    <div class="header-right">
-      {{this.city}}
-      <span class="iconfont iconfont-right">&#xe64a;</span>
-    </div>
+    <router-link to="/City" tag="div">
+      <div class="header-right">
+        {{this.city}}
+        <span class="iconfont iconfont-right">&#xe64a;</span>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -18,7 +20,7 @@
 export default {
   name: "HomeHeader",
   props: {
-    city:String
+    city: String
   }
 };
 </script>
@@ -26,7 +28,8 @@ export default {
 <style lang="stylus" scoped>
 // 样式里面引入样式需要在import前面加@符号
 // 在css里面添加别名样式，需要在别名前面加~线
-@import '~styles/varibles.stylus'
+@import '~styles/varibles.stylus';
+
 .header {
   line-height: 0.86rem;
   display: flex;
