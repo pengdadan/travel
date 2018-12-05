@@ -107,3 +107,13 @@ import "mint-ui/lib/style.css"
   + }
 
 ## 绘制右面侧边栏字母表
+
+## 城市页面请求axios
+1. 同首页一样的原理发送axios请求
+2. 需要注意的是：城市数据涉及到首字母和城市名，需要二次循环，所以首次循环需要 index 索引位置获得对象的每个数组
+  + <-div class="area" v-for="(item,index) of cities" :key="index">
+        + <-div class="title border-topbottom">{{index}}<-/div>
+        + <-div class="item-list">
+          + <-div class="item" v-for="i of item" :key="i.id">{{i.name}}<-/div>
+        + <-/div>
+      + <-/div>
