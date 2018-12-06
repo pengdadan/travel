@@ -117,3 +117,33 @@ import "mint-ui/lib/style.css"
           + <-div class="item" v-for="i of item" :key="i.id">{{i.name}}<-/div>
         + <-/div>
       + <-/div>
+
+## 城市页面中城市和字母表之间的联动
+1. 在字母表Alphabet组件中绑定点击字母事件，然后在methods中向上级组件传递这个点击字母事件：
+  + methods: {
+  +  handClick (e) {
+   +   this.$emit('change',e.target.innerText)
+    +  // console.log(e.target.innerText);
+      
+    + }
+  + }
+2. 在city组件中接收字母表alphabet传递过来的事件：
+  + <-city-alphabet :cities="cities" @change="changeClick"><-/city-alphabet>
+3. 在city组件中创建接收传递过来的事件方法：
+  + changeClick(letter) {
+    + this.letter=letter
+     + // console.log(letter)
+  +  }
+  并在data中创建letter：'',然后将传递过来的事件赋值到空字符串中
+4. 将这个letter传递到list组件中，然后在list组件中用props接收这个letter
+5. 然后在export default 中创建watch监听这个letter：
+  + watch: {
+  +  letter() {
+   +   if(this.letter){
+    +    const element = this.$refs[this.letter][0]
+     +   this.scroll.scrollToElement(element)
+      + }
+   + }
+ + }
+
+ ## 搜索功能逻辑实现

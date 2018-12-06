@@ -1,6 +1,15 @@
 <template>
   <div class="list">
-    <li class="item" v-for="(item,index) of cities" :key="index">{{index}}</li>
+    <li
+      class="item"
+      v-for="item of letters"
+      :key="item"
+      :ref="item"
+      @click="handClick"
+      @touchstart="handTouchStart"
+      @touchmove="handTouchMove"
+      @touchend="handTouchEnd"
+    >{{item}}</li>
   </div>
 </template>
 
@@ -9,12 +18,49 @@ export default {
   name: "CityAlphabet",
   props: {
     cities: Object
+  },
+  computed: {
+    letters() {
+      const letters = [];
+      for (let i in this.cities) {
+        letters.push(i);
+      }
+      return letters;
+    }
+  },
+  data() {
+    return {
+      touchStarts: false
+    };
+  },
+  methods: {
+    handClick(e) {
+      this.$emit("change", e.target.innerText);
+      // console.log(e.target.innerText);
+    },
+    handTouchStart() {
+      this.touchStarts = true;
+    },
+    handTouchMove(e) {
+      if (this.touchStarts) {
+        const startY = this.$refs["A"][0].offsetTop;
+        const touchY = e.touches[0].clientY - 79;
+        const index = Math.floor((touchY - startY) / 20);
+        if (index >= 0 && index < this.letters.length) {
+          this.$emit("change", this.letters[index]);
+        }
+      }
+    },
+    handTouchEnd() {
+      this.touchStarts = false;
+    }
   }
 };
 </script>
 
 <style lang="stylus" scoped>
 @import '~styles/varibles.stylus';
+
 .list {
   display: flex;
   flex-direction: column;
@@ -28,7 +74,7 @@ export default {
 
   .item {
     text-align: center;
-    line-height :.4rem;
+    line-height: 0.4rem;
     color: $bgColor;
   }
 }

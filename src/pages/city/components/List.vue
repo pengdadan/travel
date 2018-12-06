@@ -13,7 +13,7 @@
           <div class="button" v-for="item of hotCities" :key="item.id">{{item.name}}</div>
         </div>
       </div>
-      <div class="area" v-for="(item,index) of cities" :key="index">
+      <div class="area" v-for="(item,index) of cities" :key="index" :ref='index'>
         <div class="title border-topbottom">{{index}}</div>
         <div class="item-list">
           <div class="item" v-for="i of item" :key="i.id">{{i.name}}</div>
@@ -29,10 +29,21 @@ export default {
   name: "CityList",
   props: {
     cities: Object,
-    hotCities: Array
+    hotCities: Array,
+    letter: String
   },
   mounted() {
     this.scroll = new Bscroll(this.$refs.wrapper)
+  },
+  watch: {
+    letter() {
+      if(this.letter){
+        const element = this.$refs[this.letter][0]
+        this.scroll.scrollToElement(element)
+       }
+      // console.log(this.letter);
+      
+    }
   }
 };
 </script>
@@ -53,7 +64,7 @@ export default {
 .list {
   overflow: hidden;
   position: absolute;
-  top: 1.6rem;
+  top: 1.58rem;
   right: 0;
   bottom: 0;
   left: 0;
