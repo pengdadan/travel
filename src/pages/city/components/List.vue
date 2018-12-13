@@ -4,19 +4,24 @@
       <div class="area">
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
-          <div class="button">北京</div>
+          <div class="button">{{this.$store.state.city}}</div>
         </div>
       </div>
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list">
-          <div class="button" v-for="item of hotCities" :key="item.id">{{item.name}}</div>
+          <div
+            class="button"
+            v-for="item of hotCities"
+            :key="item.id"
+            @click="cityClick(item.name)"
+          >{{item.name}}</div>
         </div>
       </div>
-      <div class="area" v-for="(item,index) of cities" :key="index" :ref='index'>
+      <div class="area" v-for="(item,index) of cities" :key="index" :ref="index">
         <div class="title border-topbottom">{{index}}</div>
         <div class="item-list">
-          <div class="item" v-for="i of item" :key="i.id">{{i.name}}</div>
+          <div class="item" v-for="i of item" :key="i.id" @click="cityClick(i.name)">{{i.name}}</div>
         </div>
       </div>
     </div>
@@ -32,17 +37,24 @@ export default {
     hotCities: Array,
     letter: String
   },
+  methods: {
+    cityClick(city) {
+      this.$store.dispatch("changeCity", city);
+      this.$router.push("/");
+
+      // alert(city)
+    }
+  },
   mounted() {
-    this.scroll = new Bscroll(this.$refs.wrapper)
+    this.scroll = new Bscroll(this.$refs.wrapper);
   },
   watch: {
     letter() {
-      if(this.letter){
-        const element = this.$refs[this.letter][0]
-        this.scroll.scrollToElement(element)
-       }
+      if (this.letter) {
+        const element = this.$refs[this.letter][0];
+        this.scroll.scrollToElement(element);
+      }
       // console.log(this.letter);
-      
     }
   }
 };

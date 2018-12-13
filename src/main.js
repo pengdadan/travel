@@ -5,6 +5,9 @@ import App from './App'
 import router from './router/index.js'
 // 处理手机端click事件300ms延迟情况
 import fastClick from 'fastclick'
+
+import store from './store/index.js'
+
 // 按需导入轮播图样式
 import {Swipe,SwipeItem} from 'mint-ui'
 Vue.component(Swipe.name, Swipe)
@@ -27,6 +30,7 @@ fastClick.attach(document.body)
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

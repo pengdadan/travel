@@ -5,11 +5,11 @@
     </div>
     <div class="header-input">
       <span class="iconfont">&#xe632;</span>
-      输入城市景点
+      <input class="search-input" type="text" placeholder="输入城市景点">
     </div>
     <router-link to="/City" tag="div">
       <div class="header-right">
-        {{this.city}}
+        <div class="header-right-desc">{{this.$store.state.city}}</div>
         <span class="iconfont iconfont-right">&#xe64a;</span>
       </div>
     </router-link>
@@ -19,9 +19,7 @@
 <script>
 export default {
   name: "HomeHeader",
-  props: {
-    city: String
-  }
+  props: {}
 };
 </script>
 
@@ -57,12 +55,33 @@ export default {
     margin-left: 0.1rem;
     padding-left: 0.2rem;
     color: #ccc;
+    position: relative;
+
+    .search-input {
+      height: 0.6rem;
+      line-height: 0.63rem;
+      width: 4.5rem;
+      position: absolute;
+      right: 0;
+      background: #fff;
+      padding-left: 0;
+      font-size: 16px;
+      border-width: 0;
+    }
   }
 
   .header-right {
-    width: 1.24rem;
+    width: 1.64rem;
     float: right;
     text-align: center;
+    display: flex;
+
+    .header-right-desc {
+      width: 1.24rem;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
 
     .iconfont-right {
       font-size: 0.24rem;

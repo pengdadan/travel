@@ -147,3 +147,6 @@ import "mint-ui/lib/style.css"
  + }
 
  ## 搜索功能逻辑实现
+
+ ## Vuex实现首页和城市页面数据共享
+ 
