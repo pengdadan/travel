@@ -2,18 +2,14 @@
   <div>
     <div class="title">热销推荐</div>
     <ul class="item-title">
-      <li class="item" v-for="item of recommend" :key="item.id">
-        <img
-          :src="item.imgUrl"
-        >
+      <router-link class="item" v-for="item of recommend" :key="item.id" :to="'/detail/'+item.id">
+        <img :src="item.imgUrl">
         <div class="item-desc">
           <p class="item-top">{{item.title}}</p>
-          <p class="item-middle">
-            {{item.desc}}
-          </p>
+          <p class="item-middle">{{item.desc}}</p>
           <p class="item-button">查看详情</p>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
@@ -26,7 +22,7 @@ export default {
   },
   data() {
     return {
-     /*  recommendList: [
+      /*  recommendList: [
         {
           id: 1,
           imgUrl:
