@@ -1,36 +1,34 @@
 <template>
   <div>
     <div class="banner" @click="open">
-      <img
-        src="http://img1.qunarzz.com/piao/fusion/1712/91/a275569091681d02.jpg_640x200_0519ccb9.jpg"
-        alt
-      >
+      <img :src="bannerImg">
       <div class="banner-info">
-        <div class="banner-title">大连圣亚海洋世界(AAAA景区)</div>
+        <div class="banner-title">{{sightName}}</div>
         <div class="banner-number">
           <span class="iconfont icon">&#xe692;</span>
-          39
+          {{this.gallaryImgs.length}}
         </div>
       </div>
     </div>
-    <common-gallary @close="close" v-show="flag" :imgs="imgs"></common-gallary>
+    <fade-animation>
+      <common-gallary @close="close" v-show="flag" :imgs="gallaryImgs"></common-gallary>
+    </fade-animation>
   </div>
 </template>
 
 <script>
 import CommonGallary from "common/gallary/Gallary.vue";
+import FadeAnimation from "common/fade/FadeAnimation";
 export default {
   name: "DetailBanner",
   components: {
-    CommonGallary
+    CommonGallary,
+    FadeAnimation
   },
+  props: ["sightName", "bannerImg", "gallaryImgs"],
   data() {
     return {
-      flag: false,
-      imgs: [
-        "http://img1.qunarzz.com/sight/source/1510/6e/1ea71e2f04e.jpg_r_640x214_aa6f091d.jpg",
-        "http://img1.qunarzz.com/sight/source/1505/aa/7baaf8a851d221.jpg_r_640x214_1431200f.jpg"
-      ]
+      flag: false
     };
   },
   methods: {
@@ -52,7 +50,6 @@ export default {
   position: relative;
 
   img {
-    height: 205px;
     width: 100%;
   }
 

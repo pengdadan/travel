@@ -1,13 +1,15 @@
 <template>
   <div class="container" @click="close">
-    <div class="wrapper">
-      <swiper :options="swiperOption">
-        <swiper-slide v-for="(item,index) in imgs" :key="index">
-          <img :src="item" alt>
-        </swiper-slide>
-        <div class="swiper-pagination" slot="pagination"></div>
-      </swiper>
-    </div>
+    <transition>
+      <div class="wrapper">
+        <swiper :options="swiperOption">
+          <swiper-slide v-for="(item,index) in imgs" :key="index">
+            <img :src="item" alt>
+          </swiper-slide>
+          <div class="swiper-pagination" slot="pagination"></div>
+        </swiper>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -25,7 +27,7 @@ export default {
   data() {
     return {
       swiperOption: {
-        pagination: ".swiper-pagination",//此处是为了监听swiper-pagination这个类的样式
+        pagination: ".swiper-pagination", //此处是为了监听swiper-pagination这个类的样式
         paginationType: "fraction",
         observer: true,
         observeParents: true
@@ -58,15 +60,24 @@ export default {
   .wrapper {
     img {
       width: 100%;
-      height:230px;
     }
-    .swiper-container{
+
+    .swiper-container {
       overflow: inherit;
     }
+
     .swiper-pagination {
       color: #fff;
       bottom: -40px;
     }
   }
+}
+
+.v-enter, .v-leave-to {
+  opacity: 0;
+}
+
+.v-enter-active, .v-leave-active {
+  transition: opacity 0.6s;
 }
 </style>

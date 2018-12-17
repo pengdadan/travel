@@ -7,8 +7,7 @@ import Detail from '../pages/detail/Detail.vue'
 Vue.use(Router)
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'Home',
       component: Home
@@ -23,5 +22,12 @@ export default new Router({
       name: 'Detail',
       component: Detail
     },
-  ]
+  ],
+  // 当切换页面时，滚动会对下一个页面有影响，所以需要此项来使跳转到下一个页面时，回到页面顶端
+  scrollBehavior(to, from, savedPosition) {
+    return {
+      x: 0,
+      y: 0
+    }
+  }
 })

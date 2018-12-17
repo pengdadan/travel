@@ -26,18 +26,17 @@ export default {
   methods: {
     handlScroll() {
       // 获取页面顶端滚动时距顶端的距离
-      const top = document.documentElement.scrollTop;
+      var top = document.documentElement.scrollTop;
       if (top > 60) {
         this.showAbs = false;
         // 在距离顶部60至140之间达到渐隐渐现的效果
         let opacity = top / 140;
         opacity = opacity > 1 ? 1 : opacity;
-        this.opacityStyle.opacity = opacity;
+        this.opacityStyle = { opacity };
       } else {
         this.showAbs = true;
       }
-      // console.log(top);
-      
+      console.log(top);
     }
   },
   // 因为页面用例keep-alive，所有页面一展示就会执行的生命周期钩子
@@ -48,7 +47,8 @@ export default {
   // 在退出当前页面时执行的生命周期钩子
   deactivated() {
     // 退出当前页面时，对页面显示时的事件解绑
-    window.removeEventListener("scroll", this.handlScroll)
+    window.removeEventListener("scroll", this.handlScroll);
+
   }
 };
 </script>
@@ -74,6 +74,7 @@ export default {
 }
 
 .header-fixed {
+  z-index: 99;
   position: fixed;
   top: 0;
   left: 0;
