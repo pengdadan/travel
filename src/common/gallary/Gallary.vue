@@ -58,6 +58,7 @@ export default {
   .wrapper {
     img {
       width: 100%;
+      height:230px;
     }
     .swiper-container{
       overflow: inherit;
