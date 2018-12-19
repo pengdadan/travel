@@ -36,7 +36,7 @@ export default {
       } else {
         this.showAbs = true;
       }
-      console.log(top);
+      // console.log(top);
     }
   },
   // 因为页面用例keep-alive，所有页面一展示就会执行的生命周期钩子

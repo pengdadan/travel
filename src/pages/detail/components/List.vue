@@ -30,7 +30,7 @@ export default {
       if (item) {
         this.tag = !this.tag;
       } else {
-        window.location.href = "/";
+        window.location.href = "./";
       }
     }
   }

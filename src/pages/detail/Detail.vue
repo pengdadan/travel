@@ -34,7 +34,7 @@ export default {
       // axios.get("/api/detail.json?id=" + this.$route.params.id);
       // 发送axios请求获取后台数据
       axios
-        .get("/api/detail.json", {
+        .get("../../../static/mock/detail.json", {
           params: {
             id: this.$route.params.id
           }

@@ -23,8 +23,7 @@ import './assets/styles/border.css'
 // 导入字体图标
 import './assets/styles/iconfont.css'
 // 导入mui样式
-import './lib/mui/css/mui.min.css'
-// import './lib/mui/js/mui'
+import './lib/mui/css/mui.css'
 
 // 导入轮播图插件样式
 import 'swiper/dist/css/swiper.css'
